@@ -1,0 +1,22 @@
+
+server:
+  port: 8585
+  servlet:
+    context-path: /crud
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    url: jdbc:h2:file:~/cruddb
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+logging:
+  level:
+    root: DEBUG
+    be.ipeters.*: DEBUG
