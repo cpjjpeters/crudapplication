@@ -5,12 +5,19 @@ server:
     context-path: /crud
 
 spring:
+  sql:
+    init:
+      mode: always
   datasource:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    url: jdbc:h2:file:~/cruddb
-
+    initialization-mode: always
+    url: jdbc:h2:mem:cruddb
+#    url: jdbc:h2:~/Documenten/databaseH2/cruddb
+#
+  thymeleaf:
+    cache: false
   h2:
     console:
       enabled: true
@@ -18,5 +25,9 @@ spring:
 
 logging:
   level:
-    root: DEBUG
-    be.ipeters.*: DEBUG
+    be.ipeters.crudapplication.*: DEBUG
+jpa:
+  show-sql: true
+  defer-datasource-initialization: true
+  hibernate:
+    ddl-auto: update
