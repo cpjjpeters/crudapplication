@@ -18,10 +18,7 @@ import java.util.List;
 @RequestMapping(value = "/cities")//, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CityController {
 
-//    @Autowired
-//    CityJpaRepository cityJpaRepository;
-//    @Autowired
-//    CityJpaDaoMapper cityJpaDaoMapper;
+
 //private static final Logger log = LoggerFactory.getLogger(CityController.class);
     private final CityJpaPersistenceService cityJpaPersistenceService;
 

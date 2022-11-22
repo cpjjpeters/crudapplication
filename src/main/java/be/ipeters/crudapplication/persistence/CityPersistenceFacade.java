@@ -10,4 +10,9 @@ public interface CityPersistenceFacade {
 
     List<City> findAll();
 
+    City findById(Long id);
+
+    void delete(City city);
+
+
 }

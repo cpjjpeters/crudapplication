@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.Column;
 
 /* carlpeters created on 16/11/2022 inside the package - be.ipeters.crudapplication.model */
-@Data
+//@Data
 public class City {
     private Long id;
     private String name;
@@ -24,27 +24,27 @@ public class City {
     public City() {
     }
 //
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public int getPopulation() {
-//        return population;
-//    }
-//
-//    public void setPopulation(int population) {
-//        this.population = population;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
 }

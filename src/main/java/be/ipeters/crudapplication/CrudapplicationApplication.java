@@ -65,7 +65,11 @@ public class CrudapplicationApplication {
 			stadRepository.save(stad3);
 
 			CityJpaEntity city1 = new CityJpaEntity("Gent", 263927);
+			CityJpaEntity city2 = new CityJpaEntity("Bergen", 95887);
+			CityJpaEntity city3 = new CityJpaEntity("Bilzen", 32477);
 			cityJpaRepository.save(city1);
+			cityJpaRepository.save(city2);
+			cityJpaRepository.save(city3);
 
 			Employee emp1 = new Employee("John", "Warton", "warton@gmail.com");
 			Employee emp2 = new Employee("Mike", "Lanister", "lanister@gmail.com");

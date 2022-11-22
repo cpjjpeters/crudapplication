@@ -3,6 +3,7 @@ package be.ipeters.crudapplication.services;
 
 import be.ipeters.crudapplication.controller.StadController;
 import be.ipeters.crudapplication.entities.CityJpaEntity;
+import be.ipeters.crudapplication.error.ResourceNotFoundException;
 import be.ipeters.crudapplication.mapper.CityJpaDaoMapper;
 import be.ipeters.crudapplication.model.City;
 import be.ipeters.crudapplication.persistence.CityPersistenceFacade;
@@ -40,7 +41,19 @@ public class CityJpaPersistenceService implements CityPersistenceFacade {
                 .map(this.cityJpaDaoMapper::jpaEntityToModel).collect(Collectors.toList());
     }
 
+    public City findById(Long id) {
+        return this.cityJpaRepository.findById(id)
+                .map(this.cityJpaDaoMapper::jpaEntityToModel)
+                .orElseThrow(()-> new ResourceNotFoundException("City not found for this id ::" + id))
+                ;
+    }
+
     public void deleteAll() {
         this.cityJpaRepository.deleteAll();
     }
+
+    public void delete(City city) {
+        this.cityJpaRepository.delete(this.cityJpaDaoMapper.modelToJpaEntity(city));
+    }
+
 }
