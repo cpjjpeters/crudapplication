@@ -56,4 +56,14 @@ public class CityJpaPersistenceService implements CityPersistenceFacade {
         this.cityJpaRepository.delete(this.cityJpaDaoMapper.modelToJpaEntity(city));
     }
 
+    @Override
+    public void deleteById(Long id) {
+        this.cityJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public City update(City city) {
+        return this.cityJpaDaoMapper.jpaEntityToModel(this.cityJpaRepository.save(this.cityJpaDaoMapper.modelToJpaEntity(city)));
+    }
+
 }

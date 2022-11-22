@@ -15,4 +15,7 @@ public interface CityPersistenceFacade {
     void delete(City city);
 
 
+    void deleteById(Long id);
+
+    City update(City city);
 }

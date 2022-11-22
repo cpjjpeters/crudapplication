@@ -37,9 +37,11 @@ public class CityService {
     }
 
     public void deleteById(Long id) {
+        this.cityPersistenceFacade.deleteById(id);
     }
 
     public void delete(City city){
-        
+        this.cityPersistenceFacade.delete(city);
+
     }
 }

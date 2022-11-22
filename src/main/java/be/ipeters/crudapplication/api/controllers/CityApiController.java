@@ -47,8 +47,6 @@ public class CityApiController {
     public ResponseEntity<City> findById(@PathVariable(value = "id") Long id) {//} throws ResourceNotFoundException {
         log.debug("findById");
         City city = cityService.findById(id);
-//                .orElseThrow(()->
-//                        new ResourceNotFoundException("City not found for this id::" + id));
         return ResponseEntity.ok().body(city);
     }
     @PostMapping("/create")
@@ -70,10 +68,11 @@ public class CityApiController {
 
     @DeleteMapping(value = "/delete/{id}")
     public Map<String, Boolean> deleteById(@PathVariable("id") Long id) {
-        log.debug("deleteById");
+
         City city = cityService.findById(id);
-//        cityService.delete(city);
-        cityService.deleteById(id);
+        log.debug("deleteById {} for {}", id, city.getName());
+        cityService.delete(city);
+//        cityService.deleteById(id);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
