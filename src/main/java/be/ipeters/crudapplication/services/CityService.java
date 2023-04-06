@@ -1,10 +1,13 @@
 package be.ipeters.crudapplication.services;
 
+import be.ipeters.crudapplication.error.ResourceNotFoundException;
 import be.ipeters.crudapplication.model.City;
 import be.ipeters.crudapplication.persistence.CityPersistenceFacade;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +28,9 @@ public class CityService {
 
     public City findById(Long id) {
         City city = this.cityPersistenceFacade.findById(id);
+        if(city== null){
+            throw new ResourceNotFoundException("");
+        }
         return city;
     }
 
