@@ -6,16 +6,18 @@ import be.ipeters.crudapplication.services.StadService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
-//@Slf4j
-@Controller
+@Slf4j
+@RestController
 @RequestMapping(value = "/steden")//, produces = MediaType.APPLICATION_JSON_VALUE)
 public class StadController {
 
@@ -27,6 +29,12 @@ public class StadController {
     public StadController(StadService stadService, StadRepository stadRepository) {
         this.stadService = stadService;
         this.stadRepository = stadRepository;
+    }
+
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public Optional<Stad> getStad(@PathVariable Long id){
+        log.debug("getStad");
+        return stadService.findById(id);
     }
 
     @GetMapping
