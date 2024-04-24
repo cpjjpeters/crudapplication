@@ -25,13 +25,26 @@ public class StadService {
         return this.stadRepository.findAll();
     }
 
-    public Stad save(Stad stad) {
+    public Stad createStad(Stad stad) {
 
-        log.debug("save {}", stad);
+        log.debug("createStad {}", stad);
         return this.stadRepository.save(stad);
     }
 
-    public Optional<Stad> findById(Long id) {
-        return this.stadRepository.findById(id);
+    public Stad findById(Long id) {
+        Optional<Stad> optionalStad= this.stadRepository.findById(id);
+        return optionalStad.get();
+    }
+
+    public Stad updateStad(Stad stad) {
+        Stad existingStad = this.stadRepository.findById(stad.getId()).get();
+        existingStad.setName(stad.getName());
+        existingStad.setPopulation(stad.getPopulation());
+        Stad updatedStad = this.stadRepository.save(existingStad);
+        return updatedStad;
+    }
+
+    public void deleteStad(Long id){
+        this.stadRepository.deleteById(id);
     }
 }

@@ -1,2 +1,3 @@
 # README
-in StadController(een RestController) is er een findById in 
+ StadController(is nu een volledige RestController) 
+ is er een get, put post en delete
